@@ -128,6 +128,7 @@ in
         kdePackages.kdeconnect-kde
         #Coding
         kdePackages.kate # ide
+        kdePackages.kdialog # send notivation to user
         helix # text editor
         vscodium # ide
         #jetbrains.idea-community # ide
@@ -184,7 +185,7 @@ in
 
         #Rest
         fwupd
-        
+
         obs-studio # recording software
         signal-desktop-bin # chatting software
         telegram-desktop
