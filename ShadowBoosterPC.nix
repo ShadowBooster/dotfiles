@@ -157,7 +157,7 @@ in
 
         #Terminal
         fastfetch # system info
-        starship # terminal theme
+        #starship # terminal theme
         zsh # shell
         oh-my-zsh # shell
         shellcheck
