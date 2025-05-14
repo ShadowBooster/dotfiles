@@ -14,6 +14,11 @@ echo "NixOS Updating..."
 
 sudo nixos-rebuild switch --upgrade &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
 
+currentNumber=$(nixos-rebuild list-generations | grep current | awk {$0})
+
+echo "update diff"
+nvd diff /nix/var/nix/profiles/system-{($currentNumber - 1),$currentNumber}-link
+
 # Notify all OK!
 export QT_LOGGING_RULES="qt.multimedia.symbolsresolver=false"
 kdialog --passivepopup "successfully rebuild your nixos system" 5 --title "NIXOS REBUILD OK"

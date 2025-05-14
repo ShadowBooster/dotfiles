@@ -131,9 +131,7 @@ in
         kdePackages.kdialog # send notivation to user
         helix # text editor
         vscodium # ide
-        #jetbrains.idea-community # ide
         jetbrains.idea-ultimate
-        #jetbrains.pycharm-community
         jetbrains.pycharm-professional
         #jetbrains.rust-rover
 
@@ -142,17 +140,12 @@ in
         tor-browser
         lutris
         kdePackages.filelight
-        #R
-        #rstudio
         kdePackages.kdenlive
 
         #programming languages
         rustup # rust programming language
-        #clang
-        #llvmPackages.bintools
         jdk # java
         python3
-        #kdePackages.plasma-browser-integration
         kdePackages.partitionmanager
         kdePackages.ksystemlog
 
@@ -166,18 +159,14 @@ in
         #Gaming
         discord # chat
         steam # games
-        #Minecraft
         prismlauncher # minecraft
         minecraft-server # minecraft server
         mcrcon # talking to minecraft
         airshipper
 
-        #citra-nightly # 3ds simulator
-
         #Work
         libreoffice # office
         thunderbird # mail
-        #teams
 
         #internet
         firefox # browser
@@ -195,8 +184,6 @@ in
         vlc # videos player
         nvd # see what happend between builds
         _7zz # 7z extraction tool
-        #rpcs3
-        #clamav
         piper
         nixfmt-rfc-style
 
