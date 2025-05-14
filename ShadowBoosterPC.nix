@@ -10,7 +10,7 @@
 }:
 let
   secrets = builtins.import ./secrets.nix;
-  Shadow_Booster = secrets.userSecrets.Shadow_Booster;
+  inherit (secrets.userSecrets) Shadow_Booster;
 in
 {
 
@@ -124,7 +124,7 @@ in
   users.users = {
     "${Shadow_Booster.username}" = {
       isNormalUser = true;
-      description = Shadow_Booster.description;
+      inherit (Shadow_Booster) description;
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -212,7 +212,7 @@ in
     allowUnfree = true;
     packageOverrides = pkgs: {
       unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
+        inherit (config.nixpkgs) config;
       };
     };
   };
@@ -231,8 +231,8 @@ in
     eula = true;
     declarative = true;
     openFirewall = true;
-    whitelist = secrets.Minecraft-ServerSecrets.whitelist;
-    serverProperties = secrets.Minecraft-ServerSecrets.serverProperties;
+    inherit (secrets.Minecraft-ServerSecrets) whitelist;
+    inherit (secrets.Minecraft-ServerSecrets) serverProperties;
   };
 
   #fonts
