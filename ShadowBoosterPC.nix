@@ -207,7 +207,6 @@ in
         hyphen
         mythes
         languagetool
-        #bottles
       ];
     };
   };
