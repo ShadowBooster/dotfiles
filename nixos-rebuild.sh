@@ -1,10 +1,10 @@
 # A rebuild script that commits on a successful build
 set -e
 pushd ~/dotfiles/nixos/
-codium ShadowBoosterPC.nix
 
 # Early return if no changes were detected
 if git diff --quiet '*.nix'; then
+    codium ShadowBoosterPC.nix ~/dotfiles/nixos/
     echo "No changes detected, exiting."
     popd
     exit 0
