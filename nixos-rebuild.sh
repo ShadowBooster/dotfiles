@@ -1,7 +1,7 @@
 # A rebuild script that commits on a successful build
 set -e
-codium ShadowBoosterPC.nix
 pushd ~/dotfiles/nixos/
+codium ShadowBoosterPC.nix
 
 # Early return if no changes were detected
 if git diff --quiet '*.nix'; then
