@@ -234,6 +234,7 @@ in
     ckb-next
     xwayland
     git
+    home-manager
   ];
 
   #minecraft-server config
