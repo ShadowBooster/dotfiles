@@ -14,32 +14,43 @@ let
 in
 {
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix = {
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 10d";
+    };
+  };
 
-  # Hardware config
-  hardware.graphics.enable = true;
-
-  hardware.nvidia = {
-    nvidiaSettings = true;
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware = {
+    graphics.enable = true;
+    nvidia = {
+      nvidiaSettings = true;
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+    bluetooth.enable = true;
+    ckb-next.enable = true;
   };
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
+  boot = {
+    #boot.kernelPackages = pkgs.linuxPackages_latest;
+    loader.grub = {
+      enable = true;
+      device = "/dev/nvme0n1";
+      useOSProber = true;
+    };
+  };
 
-  # Linux version
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Networking
   networking.networkmanager.enable = true;
   networking.firewall = {
     enable = true;
@@ -93,7 +104,6 @@ in
 
   # Audio
   services.pulseaudio.enable = false;
-  hardware.bluetooth.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -106,19 +116,20 @@ in
   # services.xserver.libinput.enable = true;
 
   virtualisation.virtualbox.host.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    #dedicatedServer.openFirewall = true;
-  };
-
-  programs.partition-manager.enable = true;
-  programs.kdeconnect.enable = true;
-  hardware.ckb-next.enable = true;
 
   services.ratbagd.enable = true;
   services.power-profiles-daemon.enable = true;
   services.xserver.desktopManager.retroarch.enable = true;
+
+  programs = {
+    partition-manager.enable = true;
+    kdeconnect.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      #dedicatedServer.openFirewall = true;
+    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
@@ -266,14 +277,6 @@ in
       plugins = [ "git" ];
       theme = "robbyrussell";
     };
-  };
-
-  nix.settings.auto-optimise-store = true;
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 10d";
   };
 
   system.autoUpgrade = {

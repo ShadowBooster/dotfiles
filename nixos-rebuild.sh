@@ -10,18 +10,26 @@ if git diff --quiet '*.nix'; then
     exit 0
 fi
 
-statix check '*.nix'
+statix check || echo "Statix check failed, but continuing..."
+statix fix || echo "Statix fix failed, but continuing..."
 
 # Autoformat your nix files
-nixfmt . &>/dev/null || ( nixfmt . ; echo "formatting failed!" && exit 1)
+if ! nixfmt . &>/dev/null; then
+    nixfmt . 
+    echo "Formatting failed!"
+    exit 1
+fi
 
 # Shows your changes
 git diff -U0 '*.nix'
 
 echo "NixOS Rebuilding..."
 
-# Rebuild, output simplified errors, log trackebacks
-sudo nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+# Rebuild, output simplified errors, log trackbacks
+if ! sudo nixos-rebuild switch &> nixos-switch.log; then
+    grep --color error nixos-switch.log
+    exit 1
+fi
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
