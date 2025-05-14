@@ -21,6 +21,12 @@ nixfmt . &>/dev/null \
 # Shows your changes
 git diff -U0 '*.nix'
 
+kdialog --password "Please enter password to switch system:"
+if [ !$? = 0 ]; then
+    echo "You selected: Cancel"
+    fi
+
+
 echo "NixOS Rebuilding..."
 
 # Rebuild, output simplified errors, log trackebacks
