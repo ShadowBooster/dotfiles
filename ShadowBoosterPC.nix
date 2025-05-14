@@ -140,6 +140,7 @@ in
         jetbrains.idea-ultimate
         jetbrains.pycharm-professional
         #jetbrains.rust-rover
+        statix # nix linter
 
         #rust plot
         pkg-config

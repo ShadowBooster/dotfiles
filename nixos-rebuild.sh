@@ -10,6 +10,8 @@ if git diff --quiet '*.nix'; then
     exit 0
 fi
 
+# statix check '*.nix'
+
 # Autoformat your nix files
 nixfmt . &>/dev/null || ( nixfmt . ; echo "formatting failed!" && exit 1)
 
