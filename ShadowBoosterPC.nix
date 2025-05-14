@@ -307,7 +307,7 @@ in
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  system.copySystemConfiguration = true;
+  system.copySystemConfiguration = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

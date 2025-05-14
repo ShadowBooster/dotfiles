@@ -36,4 +36,4 @@ git commit -am "$current"
 popd
 
 # Notify all OK!
-notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
+kdialog --passivepopup "successfully rebuild your nixos system" 5 --title "NIXOS REBUILD OK"
