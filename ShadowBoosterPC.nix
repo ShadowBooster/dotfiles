@@ -123,7 +123,7 @@ in
         "networkmanager"
         "wheel"
       ];
-      #shell = pkgs.zsh;
+      shell = pkgs.zsh;
       packages = with pkgs; [
         kdePackages.kdeconnect-kde
         #Coding
@@ -257,15 +257,18 @@ in
     };
   };
 
-  #environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
 
   programs.zsh = {
-    enable = false;
+    enable = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
     shellAliases = {
-      update = "sudo nixos-rebuild switch";
+      rebuild = "./nixos-rebuild";
     };
     ohMyZsh = {
-      enable = false;
+      enable = true;
+      plugins = [ "git" ];
     };
   };
 
