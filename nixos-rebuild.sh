@@ -2,7 +2,7 @@
 set -e
 
 # Edit your config
-codium configuration.nix
+codium ShadowBoosterPC.nix
 
 # cd to your config dir
 pushd ~/dotfiles/nixos/
@@ -15,8 +15,8 @@ if git diff --quiet '*.nix'; then
 fi
 
 # Autoformat your nix files
-alejandra . &>/dev/null \
-  || ( alejandra . ; echo "formatting failed!" && exit 1)
+nixfmt . &>/dev/null \
+  || ( nixfmt . ; echo "formatting failed!" && exit 1)
 
 # Shows your changes
 git diff -U0 '*.nix'
