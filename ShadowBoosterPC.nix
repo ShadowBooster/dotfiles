@@ -264,11 +264,12 @@ in
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      rebuild = "./nixos-rebuild";
+      rebuild = "sh ~/dotfiles/nixos/nixos-rebuild.sh";
     };
     ohMyZsh = {
       enable = true;
       plugins = [ "git" ];
+      theme = "robbyrussell";
     };
   };
 
