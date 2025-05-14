@@ -1,13 +1,9 @@
 # A rebuild script that commits on a successful build
 set -e
-
-# Edit your config
 codium ShadowBoosterPC.nix
-
-# cd to your config dir
 pushd ~/dotfiles/nixos/
 
-# Early return if no changes were detected (thanks @singiamtel!)
+# Early return if no changes were detected
 if git diff --quiet '*.nix'; then
     echo "No changes detected, exiting."
     popd
@@ -15,8 +11,7 @@ if git diff --quiet '*.nix'; then
 fi
 
 # Autoformat your nix files
-nixfmt . &>/dev/null \
-  || ( nixfmt . ; echo "formatting failed!" && exit 1)
+nixfmt . &>/dev/null || ( nixfmt . ; echo "formatting failed!" && exit 1)
 
 # Shows your changes
 git diff -U0 '*.nix'

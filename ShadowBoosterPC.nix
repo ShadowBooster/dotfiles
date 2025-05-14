@@ -265,6 +265,7 @@ in
     syntaxHighlighting.enable = true;
     shellAliases = {
       rebuild = "sh ~/dotfiles/nixos/nixos-rebuild.sh";
+      update = "sh ~/dotfiles/nixos/nixos-update.sh";
     };
     ohMyZsh = {
       enable = true;
