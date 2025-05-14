@@ -4,9 +4,9 @@ set -e
 pushd ~/dotfiles/nixos/
 
 if !(git diff --quiet '*.nix'); then
-    echo "changes detected, exiting."
     # Shows your changes
     git diff -U0 '*.nix'
+    echo "changes detected, rebuild first before updating."
     exit 0
 fi
 
