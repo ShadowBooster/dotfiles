@@ -1,3 +1,4 @@
+#!/bin/bash
 # A rebuild script that commits on a successful build
 set -e
 pushd ~/dotfiles/nixos/
@@ -10,6 +11,7 @@ if git diff --quiet '*.nix'; then
     exit 0
 fi
 
+# Lints nix files
 statix check || echo "Statix check failed, but continuing..."
 statix fix || echo "Statix fix failed, but continuing..."
 
@@ -20,7 +22,7 @@ if ! nixfmt . &>/dev/null; then
     exit 1
 fi
 
-# Shows your changes
+# Shows all changes
 git diff -U0 '*.nix'
 
 echo "NixOS Rebuilding..."
