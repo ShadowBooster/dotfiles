@@ -2,6 +2,7 @@
   config,
   pkgs,
   options,
+  inputs,
   ...
 }:
 let
@@ -9,6 +10,9 @@ let
   inherit (secrets.userSecrets) Shadow_Booster;
 in
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   nix = {
     settings.experimental-features = [
