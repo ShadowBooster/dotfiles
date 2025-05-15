@@ -143,7 +143,6 @@ in
       shell = pkgs.zsh;
       packages = with pkgs; [
         kdePackages.kdeconnect-kde
-        
         #Coding
         kdePackages.kate # ide
         kdePackages.kdialog # send notivation to user
