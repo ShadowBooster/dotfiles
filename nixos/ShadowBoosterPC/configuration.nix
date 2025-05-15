@@ -204,7 +204,6 @@ in
       ];
     };
   };
-
   programs.nix-ld.enable = true;
 
   # Allow unfree packages
@@ -214,7 +213,7 @@ in
       unstable = import <nixos-unstable> {
         inherit (config.nixpkgs) config;
       };
-      stable = import <nixos-25.05> {
+      stable = import <nixos-24.11> {
         inherit (config.nixpkgs) config;
       };
     };
