@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   config,
   pkgs,
@@ -92,12 +88,6 @@ in
     layout = "us";
     variant = "";
   };
-
-  system.activationScripts.diff = ''
-    if [[ -e /run/current-system ]]; then
-      ${pkgs.nix}/bin/nix store diff-closures /run/current-system "$systemConfig"
-    fi
-  '';
 
   # Printing
   services.printing.enable = true;
@@ -196,7 +186,7 @@ in
         signal-desktop-bin # chatting software
         telegram-desktop
         gimp # photo editing
-        spotify # music
+        stable.spotify # music
         kdePackages.kcalc # calculator
         vlc # videos player
         nvd # see what happend between builds
@@ -222,6 +212,9 @@ in
     allowUnfree = true;
     packageOverrides = pkgs: {
       unstable = import <nixos-unstable> {
+        inherit (config.nixpkgs) config;
+      };
+      stable = import <nixos-25.05> {
         inherit (config.nixpkgs) config;
       };
     };
