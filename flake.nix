@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "nixos config flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -8,13 +8,14 @@
   let
   secrets = builtins.import ./secrets.nix;
   inherit (secrets.userSecrets) Shadow_Booster;
+  system = "x86_64-linux";
+  pkgs = nixpkgs.legacyPackages.${system};
   in
    {
     nixosConfigurations.Shadow_Booster.username = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [ 
-        nixos/ShadowBoosterPC/configuration.nix
+        ./nixos/shadowBoosterPC/configuration.nix
        ];
     };
   };
