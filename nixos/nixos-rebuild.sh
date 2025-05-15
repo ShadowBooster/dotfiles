@@ -1,11 +1,12 @@
 #!/bin/bash
 # A rebuild script that commits on a successful build
 set -e
-pushd ~/dotfiles/nixos/
+HOSTNAME=$(hostname)
+pushd ~/dotfiles/nixos/"${HOSTNAME}"
 
 # Early return if no changes were detected
 if git diff --quiet '*.nix'; then
-    codium ShadowBoosterPC.nix ~/dotfiles/nixos/
+    codium configuration.nix ~/dotfiles/
     echo "No changes detected, exiting."
     popd
     exit 0
