@@ -267,6 +267,7 @@ in
     shellAliases = {
       rebuild = "sh ~/dotfiles/nixos/nixos-rebuild.sh";
       update = "sh ~/dotfiles/nixos/nixos-update.sh";
+      dry-build = "sh ~/dotfiles/nixos/nixos-dry-build.sh";
     };
     ohMyZsh = {
       enable = true;

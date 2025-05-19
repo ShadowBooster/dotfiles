@@ -1,7 +1,8 @@
 #!/bin/bash
 # A update script that commits on a successful build
 set -e
-pushd ~/dotfiles/nixos/
+HOSTNAME=$(hostname)
+pushd ~/dotfiles/nixos/"${HOSTNAME}"
 
 # When changes detected it doesn't run
 if ! (git diff --quiet '*.nix'); then
