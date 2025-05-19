@@ -15,7 +15,7 @@
     nixosConfigurations.Shadow_Booster.username = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [ 
-        ./nixos/shadowBoosterPC/configuration.nix
+        ./configuration.nix
        ];
     };
   };
