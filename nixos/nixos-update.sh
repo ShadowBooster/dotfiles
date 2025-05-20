@@ -20,7 +20,7 @@ if grep --color error nixos-switch.log; then
 fi
 
 echo "Deleting garbage..."
-sudo nix-collect-garbage --delete-older-than 15d &>> nixos-switch.log
+sudo nix-collect-garbage --delete-older-than 10d &>> nixos-switch.log
 
 # Back to where you were
 popd
