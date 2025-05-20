@@ -190,7 +190,7 @@ in
         signal-desktop-bin # chatting software
         telegram-desktop
         gimp # photo editing
-        stable.spotify # music
+        spotify # music
         kdePackages.kcalc # calculator
         vlc # videos player
         nvd # see what happend between builds
