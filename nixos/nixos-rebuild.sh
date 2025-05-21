@@ -6,7 +6,7 @@ pushd ~/dotfiles
 
 # Early return if no changes were detected
 if git diff --quiet '*.nix'; then
-    codium configuration.nix ~/dotfiles/
+    codium /nixos/ShadowBoosterPC/configuration.nix ~/dotfiles/
     echo "No changes detected, exiting."
     popd
     exit 0
@@ -26,7 +26,7 @@ fi
 # Shows all changes
 git diff -U0 '*.nix'
 
-nh os switch flake.nix --ask
+nh os switch /home/evelynvds/dotfiles --ask
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)

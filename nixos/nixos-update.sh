@@ -11,7 +11,7 @@ if ! (git diff --quiet '*.nix'); then
     exit 0
 fi
 
-nh os switch flake.nix --upgrade --ask
+nh os switch /home/evelynvds/dotfiles --update --ask
 
 nh clean all --keep 10
 

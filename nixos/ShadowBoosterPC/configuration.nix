@@ -129,6 +129,10 @@
     };
   };
 
+  environment.sessionVariables = {
+    FLAKE = "/home/evelynvds/dotfiles";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.evelynvds = {
     isNormalUser = true;
