@@ -1,8 +1,7 @@
 #!/bin/bash
 # A update script that commits on a successful build
 set -e
-HOSTNAME=$(hostname)
-pushd ~/dotfiles/nixos/"${HOSTNAME}"
+pushd ~/dotfiles
 
 # When changes detected it doesn't run
 if ! (git diff --quiet '*.nix'); then
@@ -12,15 +11,9 @@ if ! (git diff --quiet '*.nix'); then
     exit 0
 fi
 
-echo "NixOS Updating..."
-sudo nixos-rebuild switch --upgrade &> nixos-switch.log
+nh os switch flake.nix --upgrade --ask
 
-if grep --color error nixos-switch.log; then
-    exit 1
-fi
-
-echo "Deleting garbage..."
-sudo nix-collect-garbage --delete-older-than 10d &>> nixos-switch.log
+nh clean all --keep 10
 
 # Back to where you were
 popd

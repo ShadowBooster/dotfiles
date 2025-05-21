@@ -3,15 +3,23 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-  };
-  outputs = { self, nixpkgs, ... } @ inputs:
-   {
-    nixosConfigurations.evelynvds = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [ 
-        ./configuration.nix
-       ];
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      nixosConfigurations.ShadowBoosterPC = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixos/ShadowBoosterPC/configuration.nix
+        ];
+      };
+    };
 }

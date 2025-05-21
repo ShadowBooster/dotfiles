@@ -2,7 +2,7 @@
 # A rebuild script that commits on a successful build
 set -e
 HOSTNAME=$(hostname)
-pushd ~/dotfiles/nixos/"${HOSTNAME}"
+pushd ~/dotfiles
 
 # Early return if no changes were detected
 if git diff --quiet '*.nix'; then
@@ -26,13 +26,7 @@ fi
 # Shows all changes
 git diff -U0 '*.nix'
 
-echo "NixOS Rebuilding..."
-
-# Rebuild, output simplified errors, log trackbacks
-if ! sudo nixos-rebuild switch &> nixos-switch.log; then
-    grep --color error nixos-switch.log
-    exit 1
-fi
+nh os switch flake.nix --ask
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)

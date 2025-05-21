@@ -5,14 +5,17 @@
   inputs,
   ...
 }:
-let
-  secrets = builtins.import ./secrets.nix;
-  inherit (secrets.userSecrets) Shadow_Booster;
-in
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.sops-nix.nixosModules.sops
   ];
+
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "home/evelynvds/.config/sops/age/keys.txt";
+
+  networking.hostName = "ShadowBoosterPC";
 
   nix = {
     settings.experimental-features = [
@@ -20,11 +23,6 @@ in
       "flakes"
     ];
     settings.auto-optimise-store = true;
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 10d";
-    };
   };
 
   hardware = {
@@ -123,90 +121,94 @@ in
       remotePlay.openFirewall = true;
       #dedicatedServer.openFirewall = true;
     };
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 10d --keep 10";
+      flake = "/home/evelynvds/dotfiles";
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = {
-    "${Shadow_Booster.username}" = {
-      isNormalUser = true;
-      inherit (Shadow_Booster) description;
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-      ];
-      shell = pkgs.zsh;
-      packages = with pkgs; [
-        kdePackages.kdeconnect-kde
+  users.users.evelynvds = {
+    isNormalUser = true;
+    description = "Evelyn";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    shell = pkgs.zsh;
+    packages = with pkgs; [
+      kdePackages.kdeconnect-kde
 
-        #Coding
-        kdePackages.kate # ide
-        kdePackages.kdialog # send notivation to user
-        helix # text editor
-        vscodium # ide
-        jetbrains.idea-ultimate
-        jetbrains.pycharm-professional
-        #jetbrains.rust-rover
-        statix # nix linter
+      #Coding
+      kdePackages.kate # ide
+      kdePackages.kdialog # send notivation to user
+      helix # text editor
+      vscodium # ide
+      jetbrains.idea-ultimate
+      jetbrains.pycharm-professional
+      #jetbrains.rust-rover
+      statix # nix linter
 
-        pkg-config
-        tor-browser
-        lutris
-        kdePackages.filelight
-        kdePackages.kdenlive
+      pkg-config
+      tor-browser
+      lutris
+      kdePackages.filelight
+      kdePackages.kdenlive
 
-        #programming languages
-        rustup # rust programming language
-        jdk # java
-        python3
-        kdePackages.partitionmanager
-        kdePackages.ksystemlog
+      #programming languages
+      rustup # rust programming language
+      jdk # java
+      python3
+      kdePackages.partitionmanager
+      kdePackages.ksystemlog
 
-        #Terminal
-        fastfetch # system info
-        #starship # terminal theme
-        zsh # shell
-        oh-my-zsh # shell
-        shellcheck
+      #Terminal
+      fastfetch # system info
+      #starship # terminal theme
+      zsh # shell
+      oh-my-zsh # shell
+      shellcheck
 
-        #Gaming
-        discord # chat
-        steam # games
-        prismlauncher # minecraft
-        minecraft-server # minecraft server
-        mcrcon # talking to minecraft
-        airshipper
+      #Gaming
+      discord # chat
+      steam # games
+      prismlauncher # minecraft
+      minecraft-server # minecraft server
+      mcrcon # talking to minecraft
+      airshipper
 
-        #Work
-        libreoffice # office
-        thunderbird # mail
+      #Work
+      libreoffice # office
+      thunderbird # mail
 
-        #internet
-        firefox # browser
-        teams-for-linux
+      #internet
+      firefox # browser
+      teams-for-linux
 
-        #Rest
-        fwupd
-        obs-studio # recording software
-        signal-desktop-bin # chatting software
-        telegram-desktop
-        gimp # photo editing
-        spotify # music
-        kdePackages.kcalc # calculator
-        vlc # videos player
-        nvd # see what happend between builds
-        _7zz # 7z extraction tool
-        piper
-        nixfmt-rfc-style
+      #Rest
+      fwupd
+      obs-studio # recording software
+      signal-desktop-bin # chatting software
+      telegram-desktop
+      gimp # photo editing
+      spotify # music
+      kdePackages.kcalc # calculator
+      vlc # videos player
+      nvd # see what happend between builds
+      _7zz # 7z extraction tool
+      piper
+      nixfmt-rfc-style
 
-        #Words
-        hunspell
-        hunspellDicts.nl_NL
-        hunspellDicts.en_GB-ize
-        hyphen
-        mythes
-        languagetool
-      ];
-    };
+      #Words
+      hunspell
+      hunspellDicts.nl_NL
+      hunspellDicts.en_GB-ize
+      hyphen
+      mythes
+      languagetool
+    ];
   };
   programs.nix-ld.enable = true;
 
@@ -230,6 +232,8 @@ in
     xwayland
     git
     home-manager
+    sops
+    nix-output-monitor
   ];
 
   #minecraft-server config
@@ -238,8 +242,25 @@ in
     eula = true;
     declarative = true;
     openFirewall = true;
-    inherit (secrets.Minecraft-ServerSecrets) whitelist;
-    inherit (secrets.Minecraft-ServerSecrets) serverProperties;
+    whitelist = {
+      Shadow_Booster = "0ecf10ea-832a-4e39-926c-f5ef1e74a6c6";
+      SillyLily074 = "ebe95a55-f1e7-460e-b399-bf34ef2fd649";
+      roblet1 = "ccb25b68-1bfd-4c43-b14f-9d8b68a8c4e8";
+      raketijsjes = "c4d8df92-c8a5-4e82-8cd7-003e92751d01";
+      MeisterTies = "d2bafbf4-6497-4d79-a03b-167aa1237786";
+    };
+    serverProperties = {
+      max-players = 10;
+      modt = "ROOD server";
+      enable-command-block = true;
+      # Rood server
+      level-seed = "ROOD";
+      level-name = "ROOD";
+      white-list = true;
+      # commen if everyone is trusted
+      op-permission-level = 2;
+      spawn-protection = 1;
+    };
   };
 
   #fonts
@@ -267,7 +288,6 @@ in
     shellAliases = {
       rebuild = "sh ~/dotfiles/nixos/nixos-rebuild.sh";
       update = "sh ~/dotfiles/nixos/nixos-update.sh";
-      dry-build = "sh ~/dotfiles/nixos/nixos-dry-build.sh";
     };
     ohMyZsh = {
       enable = true;
