@@ -124,13 +124,9 @@
     nh = {
       enable = true;
       clean.enable = true;
-      clean.extraArgs = "--keep-since 10d --keep 10";
+      clean.extraArgs = "--keep-since 7d --keep 10";
       flake = "/home/evelynvds/dotfiles";
     };
-  };
-
-  environment.sessionVariables = {
-    NH_FLAKE = "/home/evelynvds/dotfiles";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
