@@ -130,7 +130,7 @@
   };
 
   environment.sessionVariables = {
-    FLAKE = "/home/evelynvds/dotfiles";
+    NH_FLAKE = "/home/evelynvds/dotfiles";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
