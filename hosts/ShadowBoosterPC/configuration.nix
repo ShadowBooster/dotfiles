@@ -177,7 +177,6 @@
       discord # chat
       steam # games
       prismlauncher # minecraft
-      minecraft-server # minecraft server
       mcrcon # talking to minecraft
       airshipper
 
