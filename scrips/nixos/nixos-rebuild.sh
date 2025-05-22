@@ -6,8 +6,8 @@ pushd ~/dotfiles
 
 # Early return if no changes were detected
 if ! (git diff --quiet); then
-    codium /hosts/ShadowBoosterPC/configuration.nix ~/dotfiles/
-    echo "No changes detected, not switching on dirty git tree"
+    codium ~/dotfiles/hosts/ShadowBoosterPC/configuration.nix ~/dotfiles/
+    echo "changes detected, not switching on dirty git tree"
     popd
     exit 0
 fi
@@ -23,7 +23,3 @@ git commit -am "$current"
 
 # Back to where you were
 popd
-
-# Notify all OK!
-export QT_LOGGING_RULES="qt.multimedia.symbolsresolver=false"
-kdialog --passivepopup "successfully rebuild your nixos system" 5 --title "NIXOS REBUILD OK"

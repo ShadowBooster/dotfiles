@@ -13,11 +13,8 @@ fi
 
 nh os switch /home/evelynvds/dotfiles --update --ask
 
+# Cleaning up
 nh clean all --keep 10
 
 # Back to where you were
 popd
-
-# Notify all OK!
-export QT_LOGGING_RULES="qt.multimedia.symbolsresolver=false"
-kdialog --passivepopup "successfully updated your nixos system" 5 --title "NIXOS UPDATE OK"

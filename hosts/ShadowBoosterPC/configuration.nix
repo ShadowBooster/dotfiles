@@ -53,7 +53,6 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      25565 # port for minecraft-server
       8080
     ];
   };
@@ -273,12 +272,12 @@
 
   system.autoUpgrade = {
     enable = true;
-    #flake = inputs.self.outPath;
-    #flags = [
-    #  "--update-input"
-    #  "nixpkgs"
-    #  "-L" #prints logs
-    #];
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "-L" # prints logs
+    ];
     allowReboot = true;
     dates = "daily";
     rebootWindow = {

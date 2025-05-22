@@ -37,5 +37,11 @@
         spawn-protection = 1;
       };
     };
+    # port for minecraft-server
+    networking.firewall = {
+      allowedTCPPorts = [
+        25565
+      ];
+    };
   };
 }
