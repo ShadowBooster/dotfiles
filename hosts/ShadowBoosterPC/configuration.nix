@@ -263,6 +263,7 @@
     shellAliases = {
       rebuild = "sh ~/dotfiles/scrips/nixos/nixos-rebuild.sh";
       update = "sh ~/dotfiles/scrips/nixos/nixos-update.sh";
+      commit = "sh ~/dotfiles/scrips/nixos/nixos-commit.sh";
     };
     ohMyZsh = {
       enable = true;

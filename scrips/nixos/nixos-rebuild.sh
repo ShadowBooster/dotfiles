@@ -5,28 +5,15 @@ HOSTNAME=$(hostname)
 pushd ~/dotfiles
 
 # Early return if no changes were detected
-if git diff --quiet '*.nix'; then
+if ! (git diff --quiet); then
     codium /hosts/ShadowBoosterPC/configuration.nix ~/dotfiles/
-    echo "No changes detected, exiting."
+    echo "No changes detected, not switching on dirty git tree"
     popd
     exit 0
 fi
 
-# Lints nix files
-statix check || echo "Statix check failed, but continuing..."
-statix fix || echo "Statix fix failed, but continuing..."
-
-# Autoformat your nix files
-if ! nixfmt . &>/dev/null; then
-    nixfmt . 
-    echo "Formatting failed!"
-    exit 1
-fi
-
-# Shows all changes
-git diff -U0 '*.nix'
-
-nh os switch /home/evelynvds/dotfiles --ask
+# Rebuild with Nixos rebuild helper
+nh os switch --ask
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
