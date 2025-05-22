@@ -18,7 +18,8 @@
       nixosConfigurations.ShadowBoosterPC = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./nixos/ShadowBoosterPC/configuration.nix
+          ./hosts/ShadowBoosterPC/configuration.nix
+          ./nixosModules/default.nix
         ];
       };
     };

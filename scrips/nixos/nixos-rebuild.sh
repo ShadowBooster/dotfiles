@@ -6,7 +6,7 @@ pushd ~/dotfiles
 
 # Early return if no changes were detected
 if git diff --quiet '*.nix'; then
-    codium /nixos/ShadowBoosterPC/configuration.nix ~/dotfiles/
+    codium /hosts/ShadowBoosterPC/configuration.nix ~/dotfiles/
     echo "No changes detected, exiting."
     popd
     exit 0
