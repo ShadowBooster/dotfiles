@@ -124,7 +124,7 @@
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 7d --keep 10";
-      flake = "/home/evelynvds/dotfiles";
+      flake = "/etc/nixos";
     };
   };
 
@@ -234,6 +234,7 @@
     home-manager
     sops
     nix-output-monitor
+    tree
   ];
 
   #fonts
