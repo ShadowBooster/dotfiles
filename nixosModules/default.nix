@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ./minecraft/default.nix
+    ./games/minecraft.nix
   ];
 
 }

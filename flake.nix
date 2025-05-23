@@ -22,5 +22,6 @@
           ./nixosModules/default.nix
         ];
       };
+      homeManagerModules.default = ./homeManagerModules;
     };
 }
