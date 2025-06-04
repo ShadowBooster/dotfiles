@@ -12,7 +12,7 @@
 
   config = lib.mkIf config.minecraft-server.enable {
     services.minecraft-server = {
-      enable = true;
+      enable = false;
       eula = true;
       declarative = true;
       openFirewall = true;
