@@ -4,10 +4,11 @@ set -e
 pushd ~/dotfiles
 
 # When changes detected it doesn't run
-if ! (git diff --quiet '*.nix'); then
+if ! (git diff --quiet); then
     # Shows your changes
     git diff -U0 '*.nix'
     echo "changes detected, rebuild first before updating."
+    popd
     exit 0
 fi
 
