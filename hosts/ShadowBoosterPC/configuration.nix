@@ -130,6 +130,8 @@
     };
     droidcam.enable = true;
   };
+  services.lorri.enable = true;
+  programs.direnv.enable = true;
 
   minecraft-server.enable = true;
 
