@@ -15,7 +15,7 @@ fi
 nh os switch /home/evelynvds/dotfiles --update --ask
 
 # Cleaning up
-nh clean all --keep 10
+nh clean all --keep 15
 
 # Back to where you were
 popd
