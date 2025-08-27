@@ -146,6 +146,7 @@
     shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kdeconnect-kde
+      r2modman
 
       #Coding
       kdePackages.kate # ide
