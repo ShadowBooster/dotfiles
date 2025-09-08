@@ -12,6 +12,8 @@
 
   networking.hostName = "ShadowBoosterLaptop";
 
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
   nix = {
     settings.experimental-features = [
       "nix-command"
@@ -22,14 +24,6 @@
 
   hardware = {
     graphics.enable = true;
-    nvidia = {
-      nvidiaSettings = true;
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
     bluetooth.enable = true;
     ckb-next.enable = true;
   };
@@ -39,7 +33,7 @@
     #boot.kernelPackages = pkgs.linuxPackages_latest;
     loader.grub = {
       enable = true;
-      device = "/dev/nvme0n1";
+      device = "nodev";
       useOSProber = true;
     };
   };
@@ -71,7 +65,7 @@
 
   # Window server
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   programs.xwayland.enable = true;
 
   # Desktop environment
@@ -258,9 +252,9 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      rebuild = "sh ~/dotfiles/scrips/nixos/nixos-rebuild.sh";
-      update = "sh ~/dotfiles/scrips/nixos/nixos-update.sh";
-      commit = "sh ~/dotfiles/scrips/nixos/nixos-commit.sh";
+      rebuild = "sh etc/nixos/scrips/nixos/nixos-rebuild.sh";
+      update = "sh etc/nixos/scrips/nixos/nixos-update.sh";
+      commit = "sh etc/nixos/scrips/nixos/nixos-commit.sh";
     };
     ohMyZsh = {
       enable = true;
@@ -306,6 +300,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }
