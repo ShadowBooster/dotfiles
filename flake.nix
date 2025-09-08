@@ -22,6 +22,14 @@
           ./nixosModules/default.nix
         ];
       };
+
+      nixosConfigurations.ShadowBoosterLaptop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/ShadowBoosterLaptop/configuration.nix
+          ./nixosModules/default.nix
+        ];
+      };
       homeManagerModules.default = ./homeManagerModules;
     };
 }
