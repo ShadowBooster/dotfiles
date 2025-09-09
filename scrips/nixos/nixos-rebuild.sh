@@ -2,11 +2,11 @@
 # A rebuild script that commits on a successful build
 set -e
 HOSTNAME=$(hostname)
-pushd ~/dotfiles
+pushd /etc/nixos
 
 # Early return if no changes were detected
 if ! (git diff --quiet); then
-    codium ~/dotfiles/hosts/ShadowBoosterPC/configuration.nix ~/dotfiles/
+    codium /etc/nixos
     echo "changes detected, not switching on dirty git tree"
     popd
     exit 0

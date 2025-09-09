@@ -2,7 +2,7 @@
 # A rebuild script that commits on a successful build
 set -e
 HOSTNAME=$(hostname)
-pushd ~/dotfiles
+pushd /etc/nixos
 
 # Lints nix files
 if ! statix check; then

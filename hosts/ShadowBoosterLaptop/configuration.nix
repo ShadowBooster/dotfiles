@@ -28,7 +28,6 @@
     ckb-next.enable = true;
   };
 
-  # Bootloader.
   boot = {
     #boot.kernelPackages = pkgs.linuxPackages_latest;
     loader.grub = {
@@ -211,7 +210,7 @@
       unstable = import <nixos-unstable> {
         inherit (config.nixpkgs) config;
       };
-      stable = import <nixos-24.11> {
+      stable = import <nixos-25.05> {
         inherit (config.nixpkgs) config;
       };
     };
@@ -252,9 +251,9 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      rebuild = "sh etc/nixos/scrips/nixos/nixos-rebuild.sh";
-      update = "sh etc/nixos/scrips/nixos/nixos-update.sh";
-      commit = "sh etc/nixos/scrips/nixos/nixos-commit.sh";
+      rebuild = "sh /etc/nixos/scrips/nixos/nixos-rebuild.sh";
+      update = "sh /etc/nixos/scrips/nixos/nixos-update.sh";
+      commit = "sh /etc/nixos/scrips/nixos/nixos-commit.sh";
     };
     ohMyZsh = {
       enable = true;

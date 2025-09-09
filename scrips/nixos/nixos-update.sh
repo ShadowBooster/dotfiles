@@ -1,7 +1,7 @@
 #!/bin/bash
 # A update script that commits on a successful build
 set -e
-pushd ~/dotfiles
+pushd /etc/nixos
 
 # When changes detected it doesn't run
 if ! (git diff --quiet); then
@@ -12,7 +12,7 @@ if ! (git diff --quiet); then
     exit 0
 fi
 
-nh os switch /home/evelynvds/dotfiles --update --ask
+nh os switch /etc/nixos --update --ask
 
 # Cleaning up
 nh clean all --keep 10
