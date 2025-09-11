@@ -115,6 +115,7 @@
   services.sysstat.enable = true;
 
   programs = {
+    direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
     steam = {
@@ -130,9 +131,6 @@
     };
     droidcam.enable = true;
   };
-  services.lorri.enable = true;
-  programs.direnv.enable = true;
-
   minecraft-server.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -153,8 +151,8 @@
       kdePackages.kdialog # send notivation to user
       helix # text editor
       vscodium # ide
-      jetbrains.idea-ultimate
-      jetbrains.pycharm-professional
+      #jetbrains.idea-ultimate
+      #jetbrains.pycharm-professional
       #jetbrains.rust-rover
       statix # nix linter
 
@@ -165,7 +163,7 @@
       kdePackages.kdenlive
 
       #programming languages
-      rustup # rust programming language
+      #rustup # rust programming language
       jdk # java
       python3
       kdePackages.partitionmanager
@@ -216,6 +214,7 @@
       languagetool
     ];
   };
+
   programs.nix-ld.enable = true;
 
   # Allow unfree packages
