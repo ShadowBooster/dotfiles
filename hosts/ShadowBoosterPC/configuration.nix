@@ -145,6 +145,7 @@
     packages = with pkgs; [
       kdePackages.kdeconnect-kde
       r2modman
+      owmods-gui
 
       #Coding
       kdePackages.kate # ide
