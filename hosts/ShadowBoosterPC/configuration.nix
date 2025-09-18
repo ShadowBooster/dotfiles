@@ -146,6 +146,7 @@
       kdePackages.kdeconnect-kde
       r2modman
       owmods-gui
+      owmods-cli
 
       #Coding
       kdePackages.kate # ide
