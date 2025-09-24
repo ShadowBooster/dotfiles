@@ -36,7 +36,7 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
     bluetooth.enable = true;
-    ckb-next.enable = true;
+    #ckb-next.enable = true;
   };
 
   # Bootloader.
