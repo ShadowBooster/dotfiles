@@ -147,6 +147,7 @@
       r2modman
       owmods-gui
       owmods-cli
+      devenv
 
       #Coding
       kdePackages.kate # ide
