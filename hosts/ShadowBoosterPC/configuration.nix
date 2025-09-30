@@ -75,10 +75,10 @@
   };
 
   # Window server
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  programs.xwayland.enable = true;
-
+  services.xserver.videoDrivers = [
+    "nvidia"
+    "amdgpu"
+  ];
   desktop.enable = true;
 
   # Configure keymap in X11
@@ -145,34 +145,23 @@
       r2modman
       owmods-gui
       owmods-cli
-      devenv
+
+      kdePackages.kate
+      kdePackages.filelight
+      kdePackages.kdenlive
+      kdePackages.partitionmanager
+      kdePackages.ksystemlog
+      kdePackages.kcalc
 
       #Coding
-      kdePackages.kate # ide
-      kdePackages.kdialog # send notivation to user
       helix # text editor
       vscodium # ide
-      #jetbrains.idea-ultimate
-      #jetbrains.pycharm-professional
-      #jetbrains.rust-rover
       statix # nix linter
 
       pkg-config
-      tor-browser
-      lutris
-      kdePackages.filelight
-      kdePackages.kdenlive
-
-      #programming languages
-      #rustup # rust programming language
-      jdk # java
-      python3
-      kdePackages.partitionmanager
-      kdePackages.ksystemlog
 
       #Terminal
       fastfetch # system info
-      #starship # terminal theme
       zsh # shell
       oh-my-zsh # shell
       shellcheck
@@ -187,10 +176,10 @@
       #Work
       libreoffice # office
       thunderbird # mail
+      teams-for-linux
 
       #internet
       firefox # browser
-      teams-for-linux
 
       #Rest
       fwupd
@@ -199,7 +188,6 @@
       telegram-desktop
       gimp # photo editing
       spotify # music
-      kdePackages.kcalc # calculator
       vlc # videos player
       nvd # see what happend between builds
       _7zz # 7z extraction tool

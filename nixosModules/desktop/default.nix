@@ -8,19 +8,24 @@
 
 {
   options = {
-    desktop.enable = lib.mkEnableOption "plasma6";
-
-    # currently only plasma6
-    # desktop.environment = lib.mkOption {
-    #   type = lib.types.str;
-    #   default = "plasma6";
-    #   description = "Desktop environment to use (e.g. plasma6, gnome, xfce)";
-    # };
+    desktop.enable = mkOption {
+      type = types.bool;
+      default = true;
+      description = "whether to enable kde desktop-envirement";
+    };
   };
 
   config = lib.mkIf config.desktop.enable {
-    services.displayManager.sddm.enable = true;
-    services.desktopManager.plasma6.enable = true;
+    services = {
+      displayManager.sddm.enable = true;
+      desktopManager.plasma6.enable = true;
+      xserver.enable = true;
+      xserver.videoDrivers = [
+        "nvidia"
+        "amdgpu"
+      ];
+    };
+    programs.xwayland.enable = true;
     qt.platformTheme = "kde";
   };
 }
