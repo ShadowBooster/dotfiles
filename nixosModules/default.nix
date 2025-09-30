@@ -7,6 +7,7 @@
 {
   imports = [
     ./games/minecraft.nix
+    ./desktop/default.nix
   ];
 
 }

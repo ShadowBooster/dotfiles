@@ -79,10 +79,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   programs.xwayland.enable = true;
 
-  # Desktop environment
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  qt.platformTheme = "kde";
+  desktop.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -131,6 +128,7 @@
     };
     droidcam.enable = true;
   };
+
   minecraft-server.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
