@@ -8,7 +8,7 @@
 
 {
   options = {
-    desktop.enable = mkOption {
+    desktop.enable = lib.mkOption {
       type = types.bool;
       default = true;
       description = "whether to enable kde desktop-envirement";
