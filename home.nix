@@ -1,13 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "evelynvds";
   home.homeDirectory = "/home/evelynvds";
-
-  home.stateVersion = "25.05"; # Please read the comment before changing.
-
+  home.stateVersion = "25.05"; 
+  
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

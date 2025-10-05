@@ -16,15 +16,8 @@
   sops.age.keyFile = "home/evelynvds/.config/sops/age/keys.txt";
 
   networking.hostName = "ShadowBoosterPC";
-
-  nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    settings.auto-optimise-store = true;
-  };
-
+  zsh.enable = true;
+  nix.enable = true;
   hardware = {
     graphics.enable = true;
     nvidia = {
@@ -162,8 +155,6 @@
 
       #Terminal
       fastfetch # system info
-      zsh # shell
-      oh-my-zsh # shell
       shellcheck
 
       #Gaming
@@ -201,6 +192,7 @@
       hyphen
       mythes
       languagetool
+      audacity
     ];
   };
 
@@ -243,27 +235,6 @@
         sansSerif = [ "hackNerdFont" ];
         monospace = [ "hackNerdFont" ];
       };
-    };
-  };
-
-  environment.shells = with pkgs; [ zsh ];
-
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    shellAliases = {
-      rebuild = "sh ~/dotfiles/scrips/nixos/nixos-rebuild.sh";
-      update = "sh ~/dotfiles/scrips/nixos/nixos-update.sh";
-      commit = "sh ~/dotfiles/scrips/nixos/nixos-commit.sh";
-    };
-    ohMyZsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "direnv"
-      ];
-      theme = "robbyrussell";
     };
   };
 
