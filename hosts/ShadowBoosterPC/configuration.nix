@@ -17,7 +17,15 @@
 
   networking.hostName = "ShadowBoosterPC";
   zsh.enable = true;
-  nix.enable = true;
+  #nix.enable = true;
+  nix = {
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    settings.auto-optimise-store = true;
+  };
+
   hardware = {
     graphics.enable = true;
     nvidia = {

@@ -7,7 +7,7 @@
 {
   imports = [
     ./zsh.nix
-    ./nix.nix
+    #./nix.nix
   ];
 
 }
