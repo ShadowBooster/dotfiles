@@ -104,7 +104,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enable = true;
 
   services.ratbagd.enable = true;
   services.power-profiles-daemon.enable = true;
@@ -127,7 +127,6 @@
       clean.extraArgs = "--keep-since 7d --keep 10";
       flake = "/etc/nixos";
     };
-    droidcam.enable = true;
   };
 
   minecraft-server.enable = false;

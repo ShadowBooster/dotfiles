@@ -3,8 +3,8 @@
 {
   home.username = "evelynvds";
   home.homeDirectory = "/home/evelynvds";
-  home.stateVersion = "25.05"; 
-  
+  home.stateVersion = "25.05";
+
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
