@@ -127,6 +127,7 @@
       clean.extraArgs = "--keep-since 7d --keep 10";
       flake = "/etc/nixos";
     };
+    droidcam.enable = true;
   };
 
   minecraft-server.enable = false;
