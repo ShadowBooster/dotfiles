@@ -15,7 +15,7 @@ fi
 nh os switch /etc/nixos --update --ask
 
 # Cleaning up
-nh clean all --keep 15
+nh clean all --keep 10
 
 # Back to where you were
 popd
