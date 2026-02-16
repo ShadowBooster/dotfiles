@@ -191,7 +191,7 @@
       nvd # see what happend between builds
       _7zz # 7z extraction tool
       piper
-      nixfmt-rfc-style
+      pkgs.nixfmt
 
       #Words
       hunspell
