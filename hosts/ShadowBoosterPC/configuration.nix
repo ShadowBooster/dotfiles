@@ -113,6 +113,7 @@
   services.sysstat.enable = true;
 
   programs = {
+    wireshark.enable = true;
     direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
