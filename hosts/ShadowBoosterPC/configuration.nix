@@ -114,6 +114,7 @@
 
   programs = {
     wireshark.enable = true;
+    wireshark.dumpcap.enable = true;
     direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
@@ -159,6 +160,7 @@
       helix # text editor
       vscodium # ide
       statix # nix linter
+      wireshark
 
       pkg-config
 
