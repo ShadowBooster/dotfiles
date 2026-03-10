@@ -186,7 +186,7 @@
       #Rest
       fwupd
       obs-studio # recording software
-      signal-desktop-bin # chatting software
+      signal-desktop # chatting software
       telegram-desktop
       gimp # photo editing
       spotify # music
