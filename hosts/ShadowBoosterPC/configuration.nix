@@ -115,6 +115,7 @@
   programs = {
     wireshark.enable = true;
     wireshark.dumpcap.enable = true;
+    tcpdump.enable = true; # for networking challenge TCP Hack
     direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
@@ -123,6 +124,7 @@
       remotePlay.openFirewall = true;
       #dedicatedServer.openFirewall = true;
     };
+    java.enable = true;
     nh = {
       enable = true;
       clean.enable = true;
@@ -178,7 +180,7 @@
       #Work
       libreoffice # office
       thunderbird # mail
-      teams-for-linux
+      #teams-for-linux
 
       #internet
       firefox # browser
@@ -204,6 +206,9 @@
       mythes
       languagetool
       audacity
+
+      python3 # challenge networking TCP hack
+      python313Packages.scapy # Challenge networking TCP hack
     ];
   };
 
