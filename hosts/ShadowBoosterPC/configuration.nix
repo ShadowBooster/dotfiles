@@ -114,8 +114,8 @@
 
   programs = {
     wireshark.enable = true;
-    wireshark.dumpcap.enable = true;
-    tcpdump.enable = true; # for networking challenge TCP Hack
+    #wireshark.dumpcap.enable = true;
+    #tcpdump.enable = true; # for networking challenge TCP Hack
     direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
@@ -128,7 +128,7 @@
     nh = {
       enable = true;
       clean.enable = true;
-      clean.extraArgs = "--keep-since 7d --keep 5";
+      clean.extraArgs = "--keep-since 14d --keep 10";
       flake = "/etc/nixos";
     };
     droidcam.enable = true;
@@ -188,8 +188,8 @@
       #Rest
       fwupd
       obs-studio # recording software
-      signal-desktop # chatting software
-      telegram-desktop
+      #signal-desktop # chatting software
+      #telegram-desktop
       gimp # photo editing
       spotify # music
       vlc # videos player
