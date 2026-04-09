@@ -36,7 +36,7 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
     bluetooth.enable = true;
-    ckb-next.enable = true;
+    #ckb-next.enable = true;
   };
 
   # Bootloader.
@@ -231,7 +231,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    ckb-next
+    #ckb-next
     xwayland
     git
     home-manager
