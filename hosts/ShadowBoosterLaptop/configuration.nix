@@ -28,13 +28,16 @@
     ckb-next.enable = true;
   };
 
+  boot.loader.efi.canTouchEfiVariables = true;
   boot = {
     #boot.kernelPackages = pkgs.linuxPackages_latest;
-    loader.grub = {
-      enable = true;
-      device = "nodev";
-      useOSProber = true;
-    };
+    loader.systemd-boot.enable = true;
+    # loader.grub = {
+    #   enable = true;
+    #   device = "nodev";
+    #   useOSProber = true;
+    #   efiSupport = true;
+    # };
   };
 
   networking.networkmanager.enable = true;
@@ -101,7 +104,7 @@
   services.xserver.desktopManager.retroarch.enable = true;
   zramSwap.enable = true;
   services.sysstat.enable = true;
-
+  
   programs = {
     partition-manager.enable = true;
     kdeconnect.enable = true;

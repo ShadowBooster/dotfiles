@@ -6,7 +6,7 @@ pushd /etc/nixos
 
 # Early return if no changes were detected
 if ! (git diff --quiet); then
-    codium /etc/nixos
+    sudo codium /etc/nixos
     echo "changes detected, not switching on dirty git tree"
     popd
     exit 0
