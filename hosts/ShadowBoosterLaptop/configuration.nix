@@ -236,7 +236,7 @@
     enableDefaultPackages = true;
     packages = with pkgs; [
       nerd-fonts.hack
-      vistafonts
+      vista-fonts
     ];
     fontconfig = {
       defaultFonts = {
