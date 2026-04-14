@@ -226,7 +226,7 @@
       unstable = import <nixos-unstable> {
         inherit (config.nixpkgs) config;
       };
-      stable = import <nixos-24.11> {
+      stable = import <nixos-25.11> {
         inherit (config.nixpkgs) config;
       };
     };

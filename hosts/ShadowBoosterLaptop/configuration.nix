@@ -106,6 +106,7 @@
   services.sysstat.enable = true;
 
   programs = {
+    
     direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
@@ -212,7 +213,7 @@
       unstable = import <nixos-unstable> {
         inherit (config.nixpkgs) config;
       };
-      stable = import <nixos-25.05> {
+      stable = import <nixos-25.11> {
         inherit (config.nixpkgs) config;
       };
     };
