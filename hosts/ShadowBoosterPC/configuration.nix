@@ -16,7 +16,8 @@
   sops.age.keyFile = "home/evelynvds/.config/sops/age/keys.txt";
 
   networking.hostName = "ShadowBoosterPC";
-
+  zsh.enable = true;
+  #nix.enable = true;
   nix = {
     settings.experimental-features = [
       "nix-command"
@@ -75,14 +76,11 @@
   };
 
   # Window server
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  programs.xwayland.enable = true;
-
-  # Desktop environment
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  qt.platformTheme = "kde";
+  services.xserver.videoDrivers = [
+    "nvidia"
+    "amdgpu"
+  ];
+  desktop.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -106,7 +104,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enable = true;
 
   services.ratbagd.enable = true;
   services.power-profiles-daemon.enable = true;
@@ -115,6 +113,9 @@
   services.sysstat.enable = true;
 
   programs = {
+    wireshark.enable = true;
+    #wireshark.dumpcap.enable = true;
+    #tcpdump.enable = true; # for networking challenge TCP Hack
     direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
@@ -123,14 +124,16 @@
       remotePlay.openFirewall = true;
       #dedicatedServer.openFirewall = true;
     };
+    java.enable = true;
     nh = {
       enable = true;
       clean.enable = true;
-      clean.extraArgs = "--keep-since 7d --keep 10";
+      clean.extraArgs = "--keep-since 14d --keep 10";
       flake = "/etc/nixos";
     };
     droidcam.enable = true;
   };
+
   minecraft-server.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -148,34 +151,23 @@
       owmods-gui
       owmods-cli
 
-      #Coding
-      kdePackages.kate # ide
-      kdePackages.kdialog # send notivation to user
-      helix # text editor
-      vscodium # ide
-      #jetbrains.idea-ultimate
-      #jetbrains.pycharm-professional
-      #jetbrains.rust-rover
-      statix # nix linter
-
-      pkg-config
-      tor-browser
-      lutris
+      kdePackages.kate
       kdePackages.filelight
       kdePackages.kdenlive
-
-      #programming languages
-      #rustup # rust programming language
-      jdk # java
-      python3
       kdePackages.partitionmanager
       kdePackages.ksystemlog
+      kdePackages.kcalc
+
+      #Coding
+      helix # text editor
+      vscodium # ide
+      statix # nix linter
+      wireshark
+
+      pkg-config
 
       #Terminal
       fastfetch # system info
-      #starship # terminal theme
-      zsh # shell
-      oh-my-zsh # shell
       shellcheck
 
       #Gaming
@@ -188,24 +180,23 @@
       #Work
       libreoffice # office
       thunderbird # mail
+      #teams-for-linux
 
       #internet
       firefox # browser
-      teams-for-linux
 
       #Rest
       fwupd
       obs-studio # recording software
-      signal-desktop-bin # chatting software
-      telegram-desktop
+      #signal-desktop # chatting software
+      #telegram-desktop
       gimp # photo editing
       spotify # music
-      kdePackages.kcalc # calculator
       vlc # videos player
       nvd # see what happend between builds
       _7zz # 7z extraction tool
       piper
-      nixfmt-rfc-style
+      pkgs.nixfmt
 
       #Words
       hunspell
@@ -214,6 +205,10 @@
       hyphen
       mythes
       languagetool
+      audacity
+
+      python3 # challenge networking TCP hack
+      python313Packages.scapy # Challenge networking TCP hack
     ];
   };
 
@@ -248,7 +243,7 @@
     enableDefaultPackages = true;
     packages = with pkgs; [
       nerd-fonts.hack
-      vistafonts
+      vista-fonts
     ];
     fontconfig = {
       defaultFonts = {
@@ -256,27 +251,6 @@
         sansSerif = [ "hackNerdFont" ];
         monospace = [ "hackNerdFont" ];
       };
-    };
-  };
-
-  environment.shells = with pkgs; [ zsh ];
-
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    shellAliases = {
-      rebuild = "sh ~/dotfiles/scrips/nixos/nixos-rebuild.sh";
-      update = "sh ~/dotfiles/scrips/nixos/nixos-update.sh";
-      commit = "sh ~/dotfiles/scrips/nixos/nixos-commit.sh";
-    };
-    ohMyZsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "direnv"
-      ];
-      theme = "robbyrussell";
     };
   };
 

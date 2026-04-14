@@ -4,9 +4,10 @@ set -e
 HOSTNAME=$(hostname)
 pushd /etc/nixos
 
-# if dirty tree, first fix that
-if ! (git diff --quiet); then
-    codium /etc/nixos
+codium /etc/nixos
+
+# Early return if changes were detected
+if [ -n "$(git ls-files --others --exclude-standard)" ]; then
     echo "changes detected, not switching on dirty git tree"
     popd
     exit 0
