@@ -115,6 +115,7 @@
   services.sysstat.enable = true;
 
   programs = {
+    direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
     steam = {
@@ -130,8 +131,7 @@
     };
     droidcam.enable = true;
   };
-
-  minecraft-server.enable = true;
+  minecraft-server.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.evelynvds = {
@@ -144,14 +144,17 @@
     shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kdeconnect-kde
+      r2modman
+      owmods-gui
+      owmods-cli
 
       #Coding
       kdePackages.kate # ide
       kdePackages.kdialog # send notivation to user
       helix # text editor
       vscodium # ide
-      jetbrains.idea-ultimate
-      jetbrains.pycharm-professional
+      #jetbrains.idea-ultimate
+      #jetbrains.pycharm-professional
       #jetbrains.rust-rover
       statix # nix linter
 
@@ -162,7 +165,7 @@
       kdePackages.kdenlive
 
       #programming languages
-      rustup # rust programming language
+      #rustup # rust programming language
       jdk # java
       python3
       kdePackages.partitionmanager
@@ -213,6 +216,7 @@
       languagetool
     ];
   };
+
   programs.nix-ld.enable = true;
 
   # Allow unfree packages
@@ -231,7 +235,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #ckb-next
     xwayland
     git
     home-manager
@@ -269,7 +272,10 @@
     };
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = [
+        "git"
+        "direnv"
+      ];
       theme = "robbyrussell";
     };
   };
