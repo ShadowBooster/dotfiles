@@ -106,6 +106,7 @@
   services.sysstat.enable = true;
 
   programs = {
+    direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
     steam = {
@@ -141,8 +142,6 @@
       kdePackages.kdialog # send notivation to user
       helix # text editor
       vscodium # ide
-      jetbrains.idea-ultimate
-      jetbrains.pycharm-professional
       #jetbrains.rust-rover
       statix # nix linter
 

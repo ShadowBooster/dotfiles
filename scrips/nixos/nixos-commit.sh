@@ -20,7 +20,7 @@ if ! nixfmt . &>/dev/null; then
 fi
 
 # Shows all nix changes
-git diff -U0 '*.nix'
+git diff -U0 
 
 # Get a commit message
 echo -n "Enter commit message: "
