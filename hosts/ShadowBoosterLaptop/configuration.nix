@@ -10,19 +10,11 @@
 
   boot.initrd.kernelModules = [ "amdgpu" ];
 
-  nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    settings.auto-optimise-store = true;
-  };
-
   hardware = {
     graphics.enable = true;
     bluetooth.enable = true;
   };
-  
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot = {
     #boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -81,7 +73,6 @@
 
   # Audio
   services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -106,12 +97,6 @@
       enable = true;
       remotePlay.openFirewall = true;
       #dedicatedServer.openFirewall = true;
-    };
-    nh = {
-      enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 7d --keep 10";
-      flake = "/etc/nixos";
     };
     droidcam.enable = true;
   };
@@ -196,48 +181,6 @@
       languagetool
     ];
   };
-  programs.nix-ld.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    packageOverrides = pkgs: {
-      unstable = import <nixos-unstable> {
-        inherit (config.nixpkgs) config;
-      };
-      stable = import <nixos-25.11> {
-        inherit (config.nixpkgs) config;
-      };
-    };
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    #ckb-next
-    xwayland
-    git
-    home-manager
-    sops
-    nix-output-monitor
-    tree
-  ];
-
-  #fonts
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      nerd-fonts.hack
-      vista-fonts
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "hackNerdFont" ];
-        sansSerif = [ "hackNerdFont" ];
-        monospace = [ "hackNerdFont" ];
-      };
-    };
-  };
 
   environment.shells = with pkgs; [ zsh ];
 
@@ -254,22 +197,6 @@
       enable = true;
       plugins = [ "git" ];
       theme = "robbyrussell";
-    };
-  };
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "-L" # prints logs
-    ];
-    allowReboot = true;
-    dates = "daily";
-    rebootWindow = {
-      lower = "04:00";
-      upper = "07:00";
     };
   };
 

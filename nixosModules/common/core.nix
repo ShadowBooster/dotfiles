@@ -30,11 +30,13 @@
       ];
       auto-optimise-store = true;
     };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
-    };
+  };
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 14d --keep 10";
+    flake = "/etc/nixos";
   };
 
   security.rtkit.enable = true;
@@ -45,7 +47,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    xwayland
+    xwayland # Move to desktopManager
     git
     home-manager
     sops
