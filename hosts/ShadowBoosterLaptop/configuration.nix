@@ -6,10 +6,6 @@
   ...
 }:
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   networking.hostName = "ShadowBoosterLaptop";
 
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -25,7 +21,6 @@
   hardware = {
     graphics.enable = true;
     bluetooth.enable = true;
-    #ckb-next.enable = true;
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
@@ -98,15 +93,12 @@
   # services.xserver.libinput.enable = true;
 
   virtualisation.virtualbox.host.enable = true;
-
-  services.ratbagd.enable = true;
   services.power-profiles-daemon.enable = true;
   services.xserver.desktopManager.retroarch.enable = true;
   zramSwap.enable = true;
   services.sysstat.enable = true;
 
   programs = {
-    
     direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
@@ -133,6 +125,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "nixos-admin"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [
@@ -143,7 +136,6 @@
       kdePackages.kdialog # send notivation to user
       helix # text editor
       vscodium # ide
-      #jetbrains.rust-rover
       statix # nix linter
 
       pkg-config

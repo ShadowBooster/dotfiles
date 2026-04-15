@@ -1,35 +1,72 @@
 {
-  description = "nixos config flake";
+  description = "Multi-machine NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixos-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { self, nixpkgs, nixos-unstable, sops-nix, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      lib = nixpkgs.lib;
+
+
+    # Helper function to create NixOS configurations
+    mkHost = {
+      hostname,
+      modules ? [],
+      specialArgs ? {},
+      users ? {},
+    }: {
+      "${hostname}" = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs =
+          {
+            inherit self inputs nixpkgs nixos-unstable;
+          }
+          // specialArgs;
+        modules =
+          [
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
+            ./hosts/${hostname}
+          ]
+          ++ modules;
+      };
+    };
+
+    # Helper to create home-manager config
+    mkHomeConfig = user: {
+      "${user}" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home/${user}/home.nix
+        ];
+      };
+    };
+
     in
     {
-      nixosConfigurations.ShadowBoosterPC = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/ShadowBoosterPC/configuration.nix
-          ./nixosModules/default.nix
-        ];
-      };
-
-      nixosConfigurations.ShadowBoosterLaptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/ShadowBoosterLaptop/configuration.nix
-          ./nixosModules/default.nix
-        ];
-      };
-      homeManagerModules.default = ./homeManagerModules;
+    nixosConfigurations = mkHost {
+      hostname = "ShadowBoosterPC";
+      users = "evelynvds";
+    } // mkHost {
+      hostname = "ShadowBoosterLaptop";
+      users = "shadowbooster";
+    } // mkHost {
+      hostname = "ShadowBoosterServer";
     };
+
+    homeConfigurations = mkHomeConfig "evelynvds";
+  };
 }
