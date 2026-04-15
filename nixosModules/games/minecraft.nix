@@ -4,7 +4,6 @@
   config,
   ...
 }:
-
 {
   options = {
     minecraft-server.enable = lib.mkEnableOption "enables minecraft-server";

@@ -39,6 +39,7 @@
           [
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
+            ./nixosModules
             ./hosts/${hostname}
           ]
           ++ modules;

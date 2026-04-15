@@ -22,7 +22,7 @@
     graphics.enable = true;
     bluetooth.enable = true;
   };
-
+  
   boot.loader.efi.canTouchEfiVariables = true;
   boot = {
     #boot.kernelPackages = pkgs.linuxPackages_latest;
