@@ -104,7 +104,7 @@
   services.xserver.desktopManager.retroarch.enable = true;
   zramSwap.enable = true;
   services.sysstat.enable = true;
-  
+
   programs = {
     partition-manager.enable = true;
     kdeconnect.enable = true;
