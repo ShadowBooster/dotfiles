@@ -135,6 +135,10 @@
   };
 
   minecraft-server.enable = false;
+  nix.settings.trusted-users = [
+    "root"
+    "evelynvds"
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.evelynvds = {
@@ -163,6 +167,7 @@
       vscodium # ide
       statix # nix linter
       wireshark
+      devenv
 
       pkg-config
 
