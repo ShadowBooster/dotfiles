@@ -128,7 +128,7 @@
     nh = {
       enable = true;
       clean.enable = true;
-      clean.extraArgs = "--keep-since 14d --keep 10";
+      clean.extraArgs = "--keep-since 14d --keep 5";
       flake = "/etc/nixos";
     };
     droidcam.enable = true;
@@ -226,7 +226,7 @@
       unstable = import <nixos-unstable> {
         inherit (config.nixpkgs) config;
       };
-      stable = import <nixos-24.11> {
+      stable = import <nixos-25.11> {
         inherit (config.nixpkgs) config;
       };
     };
