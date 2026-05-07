@@ -167,7 +167,7 @@
       vscodium # ide
       statix # nix linter
       wireshark
-      devenv
+      #devenv
 
       pkg-config
 
@@ -211,9 +211,6 @@
       mythes
       languagetool
       audacity
-
-      python3 # challenge networking TCP hack
-      python313Packages.scapy # Challenge networking TCP hack
     ];
   };
 
