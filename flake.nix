@@ -41,7 +41,11 @@
             home-manager.nixosModules.home-manager
             ./nixosModules
             ./hosts/${hostname}
+            {
+            networking.hostName = hostname;
+            }
           ]
+        
           ++ modules;
       };
     };
@@ -67,7 +71,5 @@
     } // mkHost {
       hostname = "ShadowBoosterServer";
     };
-
-    homeConfigurations = mkHomeConfig "evelynvds";
   };
 }
