@@ -167,7 +167,7 @@
       vscodium # ide
       statix # nix linter
       wireshark
-      #devenv
+      devenv
 
       pkg-config
 
