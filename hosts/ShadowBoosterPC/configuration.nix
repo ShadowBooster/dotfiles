@@ -210,6 +210,7 @@
       hyphen
       mythes
       languagetool
+      fasttext
       audacity
     ];
   };
