@@ -134,6 +134,8 @@
     droidcam.enable = true;
   };
 
+  services.languagetool.enable = true;
+
   minecraft-server.enable = false;
   nix.settings.trusted-users = [
     "root"
