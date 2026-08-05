@@ -163,7 +163,8 @@
       kdePackages.partitionmanager
       kdePackages.ksystemlog
       kdePackages.kcalc
-      bitwarden-desktop
+      #bitwarden-desktop
+      bitwarden-cli
 
       #Coding
       helix # text editor
