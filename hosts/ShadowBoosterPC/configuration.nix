@@ -165,6 +165,7 @@
       kdePackages.kcalc
       #bitwarden-desktop
       bitwarden-cli
+      telegram-desktop
 
       #Coding
       helix # text editor
