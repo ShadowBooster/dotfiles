@@ -163,7 +163,7 @@
       kdePackages.partitionmanager
       kdePackages.ksystemlog
       kdePackages.kcalc
-      #bitwarden-desktop
+      bitwarden-desktop
       bitwarden-cli
       telegram-desktop
 
