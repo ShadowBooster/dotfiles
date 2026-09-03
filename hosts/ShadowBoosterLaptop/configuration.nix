@@ -69,6 +69,7 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
   programs.xwayland.enable = true;
+  desktop.enable = true;
 
   # Desktop environment
   services.displayManager.sddm.enable = true;
