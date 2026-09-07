@@ -157,8 +157,6 @@
       owmods-gui
       owmods-cli
 
-      whatsapp-electron
-
       kdePackages.kate
       kdePackages.filelight
       kdePackages.kdenlive
