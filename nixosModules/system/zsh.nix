@@ -29,7 +29,7 @@
         ];
         theme = "robbyrussell";
       };
-      initContent = ''
+      interactiveShellInit = ''
         eval "$(devenv hook zsh)"
       '';
     };
