@@ -13,6 +13,7 @@
   config = lib.mkIf config.zsh.enable {
     programs.zsh = {
       enable = true;
+      enableCompletion = true;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
@@ -25,10 +26,12 @@
         plugins = [
           "git"
           "direnv"
-          "auto-notify"
         ];
         theme = "robbyrussell";
       };
+      initContent = ''
+        eval "$(devenv hook zsh)"
+      '';
     };
     environment.shells = [ pkgs.zsh ];
     users.defaultUserShell = pkgs.zsh;

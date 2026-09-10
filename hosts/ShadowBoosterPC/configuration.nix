@@ -17,6 +17,7 @@
 
   networking.hostName = "ShadowBoosterPC";
   zsh.enable = true;
+
   #nix.enable = true;
   nix = {
     settings.experimental-features = [
