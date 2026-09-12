@@ -29,9 +29,6 @@
         ];
         theme = "robbyrussell";
       };
-      interactiveShellInit = ''
-        eval "$(devenv hook zsh)"
-      '';
     };
     environment.shells = [ pkgs.zsh ];
     users.defaultUserShell = pkgs.zsh;
