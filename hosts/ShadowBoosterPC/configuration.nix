@@ -176,7 +176,7 @@
       wireshark
       devenv
       gnupg
-      pinentry-tty
+      pinentry-all
 
       pkg-config
 
