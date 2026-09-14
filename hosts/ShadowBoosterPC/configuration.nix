@@ -34,7 +34,7 @@
       powerManagement.enable = false;
       powerManagement.finegrained = false;
       open = false;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     };
     bluetooth.enable = true;
     #ckb-next.enable = true;
@@ -128,13 +128,17 @@
     nh = {
       enable = true;
       clean.enable = true;
-      clean.extraArgs = "--keep-since 14d --keep 10";
+      clean.extraArgs = "--keep-since 14d --keep 5";
       flake = "/etc/nixos";
     };
     droidcam.enable = true;
   };
 
   minecraft-server.enable = false;
+  nix.settings.trusted-users = [
+    "root"
+    "evelynvds"
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.evelynvds = {
@@ -163,6 +167,7 @@
       vscodium # ide
       statix # nix linter
       wireshark
+      #devenv
 
       pkg-config
 
@@ -206,9 +211,6 @@
       mythes
       languagetool
       audacity
-
-      python3 # challenge networking TCP hack
-      python313Packages.scapy # Challenge networking TCP hack
     ];
   };
 
