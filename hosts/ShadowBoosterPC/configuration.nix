@@ -113,7 +113,13 @@
   zramSwap.enable = true;
   services.sysstat.enable = true;
 
+  services.pcscd.enable = true; # required by gnupg i think
   programs = {
+    gnupg.agent = {
+      enable = true;
+      pinentryFlavor = "all";
+      enableSSHSupport = true;
+    };
     wireshark.enable = true;
     #wireshark.dumpcap.enable = true;
     #tcpdump.enable = true; # for networking challenge TCP Hack
@@ -175,8 +181,6 @@
       statix # nix linter
       wireshark
       devenv
-      gnupg
-      pinentry-all
 
       pkg-config
 
