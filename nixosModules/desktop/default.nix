@@ -21,7 +21,7 @@
       desktopManager.plasma6.enable = true;
       xserver.enable = true;
       xserver.videoDrivers = [
-        "nvidia"
+        # "nvidia"
         "amdgpu"
       ];
     };

@@ -69,6 +69,7 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
   programs.xwayland.enable = true;
+  desktop.enable = true;
 
   # Desktop environment
   services.displayManager.sddm.enable = true;
@@ -106,6 +107,8 @@
   services.sysstat.enable = true;
 
   programs = {
+
+    direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
     steam = {
@@ -141,8 +144,6 @@
       kdePackages.kdialog # send notivation to user
       helix # text editor
       vscodium # ide
-      jetbrains.idea-ultimate
-      jetbrains.pycharm-professional
       #jetbrains.rust-rover
       statix # nix linter
 
@@ -184,7 +185,7 @@
       #Rest
       fwupd
       obs-studio # recording software
-      signal-desktop-bin # chatting software
+      signal-desktop # chatting software
       telegram-desktop
       gimp # photo editing
       spotify # music
@@ -193,7 +194,7 @@
       nvd # see what happend between builds
       _7zz # 7z extraction tool
       piper
-      nixfmt-rfc-style
+      nixfmt
 
       #Words
       hunspell
@@ -213,7 +214,7 @@
       unstable = import <nixos-unstable> {
         inherit (config.nixpkgs) config;
       };
-      stable = import <nixos-25.05> {
+      stable = import <nixos-25.11> {
         inherit (config.nixpkgs) config;
       };
     };
