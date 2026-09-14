@@ -117,7 +117,6 @@
   programs = {
     gnupg.agent = {
       enable = true;
-      pinentryFlavor = "all";
       enableSSHSupport = true;
     };
     wireshark.enable = true;
