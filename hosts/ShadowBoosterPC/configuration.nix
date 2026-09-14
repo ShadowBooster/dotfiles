@@ -175,6 +175,7 @@
       statix # nix linter
       wireshark
       devenv
+      GnuPG
 
       pkg-config
 
