@@ -197,7 +197,7 @@
       #Work
       libreoffice # office
       thunderbird # mail
-      #teams-for-linux
+      teams-for-linux
 
       #internet
       firefox # browser
@@ -205,8 +205,6 @@
       #Rest
       fwupd
       obs-studio # recording software
-      #signal-desktop # chatting software
-      #telegram-desktop
       gimp # photo editing
       spotify # music
       vlc # videos player
