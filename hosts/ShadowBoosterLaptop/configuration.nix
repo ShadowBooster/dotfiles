@@ -98,7 +98,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
 
   services.ratbagd.enable = true;
   services.power-profiles-daemon.enable = true;
@@ -144,7 +144,6 @@
       kdePackages.kdialog # send notivation to user
       helix # text editor
       vscodium # ide
-      #jetbrains.rust-rover
       statix # nix linter
 
       pkg-config
