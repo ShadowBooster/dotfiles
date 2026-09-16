@@ -144,7 +144,6 @@
       kdePackages.kdialog # send notivation to user
       helix # text editor
       vscodium # ide
-      #jetbrains.rust-rover
       statix # nix linter
 
       pkg-config
