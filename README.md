@@ -11,4 +11,4 @@ This repository contains the configuration files and scripts for managing my Nix
     - [] selfhost bitwarden
     - [] My own website
 - [] Easier deployment nixos on new device
-- [] Implement home.nix 
+- [] Implement home.nix
