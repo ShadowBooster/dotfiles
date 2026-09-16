@@ -17,6 +17,7 @@
 
   networking.hostName = "ShadowBoosterPC";
   zsh.enable = true;
+
   #nix.enable = true;
   nix = {
     settings.experimental-features = [
@@ -112,7 +113,12 @@
   zramSwap.enable = true;
   services.sysstat.enable = true;
 
+  services.pcscd.enable = true; # required by gnupg i think
   programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
     wireshark.enable = true;
     #wireshark.dumpcap.enable = true;
     #tcpdump.enable = true; # for networking challenge TCP Hack
@@ -133,6 +139,8 @@
     };
     droidcam.enable = true;
   };
+
+  services.languagetool.enable = true;
 
   minecraft-server.enable = false;
   nix.settings.trusted-users = [
@@ -161,13 +169,17 @@
       kdePackages.partitionmanager
       kdePackages.ksystemlog
       kdePackages.kcalc
+      # bitwarden-desktop
+      bitwarden-cli
+      telegram-desktop
+      signal-desktop
 
       #Coding
       helix # text editor
       vscodium # ide
       statix # nix linter
       wireshark
-      #devenv
+      devenv
 
       pkg-config
 
@@ -210,6 +222,7 @@
       hyphen
       mythes
       languagetool
+      fasttext
       audacity
     ];
   };
