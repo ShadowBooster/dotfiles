@@ -57,12 +57,12 @@
   # '';
 
   # https://devenv.sh/git-hooks/
-  # git-hooks.hooks = {
-  #   treefmt.enable = true;
-  #   detect-private-keys.enable = true;
-  #   check-added-large-files.enable = true;
-  #   check-case-conflicts.enable = true;
-  # };
+  git-hooks.hooks = {
+    treefmt.enable = true;
+    detect-private-keys.enable = true;
+    check-added-large-files.enable = true;
+    check-case-conflicts.enable = true;
+  };
 
   # See full reference at https://devenv.sh/reference/options/
 }
