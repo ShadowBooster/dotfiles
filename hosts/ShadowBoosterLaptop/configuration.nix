@@ -161,7 +161,6 @@
 
       #Terminal
       fastfetch # system info
-      #starship # terminal theme
       zsh # shell
       oh-my-zsh # shell
       shellcheck
@@ -222,7 +221,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #ckb-next
     xwayland
     git
     home-manager

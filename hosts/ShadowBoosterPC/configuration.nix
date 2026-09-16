@@ -169,8 +169,6 @@
       kdePackages.partitionmanager
       kdePackages.ksystemlog
       kdePackages.kcalc
-      # bitwarden-desktop
-      bitwarden-cli
       telegram-desktop
       signal-desktop
 
@@ -211,7 +209,6 @@
       nvd # see what happend between builds
       _7zz # 7z extraction tool
       piper
-      pkgs.nixfmt
 
       #Words
       hunspell
