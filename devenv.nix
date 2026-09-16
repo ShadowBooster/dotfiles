@@ -11,13 +11,21 @@
   # env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = with pkgs; [
-    home-manager
-    git
-  ];
+  # packages = with pkgs; [
+  # ];
 
   # https://devenv.sh/languages/
   languages.nix.enable = true;
+
+  treefmt = {
+    enable = true;
+
+    config.programs = {
+      nixfmt.enable = true;
+      shfmt.enable = true;
+      shellcheck.enable = true;
+    };
+  };
 
   # https://devenv.sh/processes/
   # processes.dev.exec = "${lib.getExe pkgs.watchexec} -n -- ls -la";
@@ -49,7 +57,12 @@
   # '';
 
   # https://devenv.sh/git-hooks/
-  # git-hooks.hooks.shellcheck.enable = true;
+  # git-hooks.hooks = {
+  #   treefmt.enable = true;
+  #   detect-private-keys.enable = true;
+  #   check-added-large-files.enable = true;
+  #   check-case-conflicts.enable = true;
+  # };
 
   # See full reference at https://devenv.sh/reference/options/
 }

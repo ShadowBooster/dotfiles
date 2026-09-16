@@ -6,21 +6,14 @@ pushd /etc/nixos
 
 # Lints nix files
 if ! statix check; then
-    echo "Warning: Statix check failed, but continuing..."
+  echo "Warning: Statix check failed, but continuing..."
 fi
 if ! statix fix; then
-    echo "Warning: Statix fix failed, but continuing..."
-fi
-
-# Autoformat your nix files
-if ! nixfmt . &>/dev/null; then
-    nixfmt . 
-    echo "Formatting failed!"
-    exit 1
+  echo "Warning: Statix fix failed, but continuing..."
 fi
 
 # Shows all nix changes
-git diff -U0 
+git diff -U0
 
 # Get a commit message
 echo -n "Enter commit message: "

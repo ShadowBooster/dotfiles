@@ -15,18 +15,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-
-      devShells.${system}.default = pkgs.mkShell {
-        NIX_CONFIG = "experimental-features = nix-command flakes";
-        nativeBuildInputs = with pkgs; [
-          nix
-          home-manager
-          git
-          nixd
-          nixfmt
-        ];
-      };
-
       nixosConfigurations.ShadowBoosterPC = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [

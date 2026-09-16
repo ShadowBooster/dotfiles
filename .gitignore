@@ -1,6 +1,4 @@
 secrets.nix
-/.direnv
-.envrc
 # Devenv
 .devenv*
 devenv.local.nix

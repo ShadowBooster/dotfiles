@@ -8,9 +8,9 @@ codium /etc/nixos
 
 # Early return if changes were detected
 if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-    echo "changes detected, not switching on dirty git tree"
-    popd
-    exit 0
+  echo "changes detected, not switching on dirty git tree"
+  popd
+  exit 0
 fi
 
 # Rebuild with Nixos rebuild helper

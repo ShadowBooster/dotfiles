@@ -5,11 +5,11 @@ pushd /etc/nixos
 
 # When changes detected it doesn't run
 if ! (git diff --quiet); then
-    # Shows your changes
-    git diff -U0
-    echo "changes detected, rebuild first before updating."
-    popd
-    exit 0
+  # Shows your changes
+  git diff -U0
+  echo "changes detected, rebuild first before updating."
+  popd
+  exit 0
 fi
 
 nh os switch /etc/nixos --update --ask
