@@ -13,7 +13,7 @@
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "home/evelynvds/.config/sops/age/keys.txt";
+  sops.age.keyFile = "/home/evelynvds/.config/sops/age/keys.txt";
 
   networking.hostName = "ShadowBoosterPC";
   zsh.enable = true;
@@ -113,7 +113,8 @@
   zramSwap.enable = true;
   services.sysstat.enable = true;
 
-  services.pcscd.enable = true; # required by gnupg i think
+  services.pcscd.enable = true;
+
   programs = {
     gnupg.agent = {
       enable = true;
@@ -122,7 +123,6 @@
     wireshark.enable = true;
     #wireshark.dumpcap.enable = true;
     #tcpdump.enable = true; # for networking challenge TCP Hack
-    direnv.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
     steam = {
