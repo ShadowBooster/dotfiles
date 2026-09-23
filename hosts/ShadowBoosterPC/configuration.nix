@@ -115,8 +115,6 @@
 
   services.pcscd.enable = true;
 
-  hardware.xpad-noone.enable = true;
-
   programs = {
     gnupg.agent = {
       enable = true;
