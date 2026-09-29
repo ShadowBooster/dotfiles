@@ -25,7 +25,6 @@
         enable = true;
         plugins = [
           "git"
-          "direnv"
         ];
         theme = "robbyrussell";
       };

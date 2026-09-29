@@ -62,6 +62,7 @@
     detect-private-keys.enable = true;
     check-added-large-files.enable = true;
     check-case-conflicts.enable = true;
+    pre-commit-hook-ensure-sops = true;
   };
 
   # See full reference at https://devenv.sh/reference/options/
