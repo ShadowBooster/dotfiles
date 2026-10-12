@@ -158,6 +158,7 @@
       python3
       kdePackages.partitionmanager
       kdePackages.ksystemlog
+      devenv
 
       #Terminal
       fastfetch # system info
