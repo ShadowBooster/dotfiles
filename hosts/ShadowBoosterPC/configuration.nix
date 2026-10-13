@@ -178,7 +178,7 @@
       statix # nix linter
       wireshark
       devenv
-      wine-mono
+      # wine-mono
 
       pkg-config
 
