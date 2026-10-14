@@ -159,6 +159,7 @@
       kdePackages.partitionmanager
       kdePackages.ksystemlog
       devenv
+      rpi-imager
 
       #Terminal
       fastfetch # system info
