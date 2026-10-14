@@ -142,7 +142,6 @@
       #Coding
       kdePackages.kate # ide
       kdePackages.kdialog # send notivation to user
-      helix # text editor
       vscodium # ide
       statix # nix linter
 
