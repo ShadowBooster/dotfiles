@@ -171,6 +171,7 @@
       kdePackages.kcalc
       telegram-desktop
       signal-desktop
+      isabelle # interactive theorm proof assistant
 
       #Coding
       helix # text editor
