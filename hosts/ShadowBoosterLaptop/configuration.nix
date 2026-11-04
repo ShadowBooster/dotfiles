@@ -147,7 +147,7 @@
 
       pkg-config
       tor-browser
-      lutris
+      #lutris
       kdePackages.filelight
       kdePackages.kdenlive
 
