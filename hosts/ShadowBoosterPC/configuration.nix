@@ -172,6 +172,7 @@
       telegram-desktop
       signal-desktop
       isabelle # interactive theorm proof assistant
+      z3
 
       #Coding
       helix # text editor
