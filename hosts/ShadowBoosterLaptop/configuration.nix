@@ -204,7 +204,24 @@
       languagetool
     ];
   };
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      libX11
+      libXext
+      libXrender
+      libXi
+      libXtst
+      libXrandr
+      libXcursor
+      libXinerama
+      libXcomposite
+      libXfixes
+      libxcb
+      fontconfig
+      freetype
+    ];
+  };
 
   # Allow unfree packages
   nixpkgs.config = {
