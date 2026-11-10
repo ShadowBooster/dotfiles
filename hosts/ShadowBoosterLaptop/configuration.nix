@@ -142,13 +142,12 @@
       #Coding
       kdePackages.kate # ide
       kdePackages.kdialog # send notivation to user
-      helix # text editor
       vscodium # ide
       statix # nix linter
 
       pkg-config
       tor-browser
-      lutris
+      #lutris
       kdePackages.filelight
       kdePackages.kdenlive
 
@@ -159,6 +158,7 @@
       kdePackages.partitionmanager
       kdePackages.ksystemlog
       devenv
+      rpi-imager
 
       #Terminal
       fastfetch # system info
@@ -204,7 +204,24 @@
       languagetool
     ];
   };
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      libX11
+      libXext
+      libXrender
+      libXi
+      libXtst
+      libXrandr
+      libXcursor
+      libXinerama
+      libXcomposite
+      libXfixes
+      libxcb
+      fontconfig
+      freetype
+    ];
+  };
 
   # Allow unfree packages
   nixpkgs.config = {

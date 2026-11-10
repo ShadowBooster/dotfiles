@@ -18,7 +18,6 @@
   networking.hostName = "ShadowBoosterPC";
   zsh.enable = true;
 
-  #nix.enable = true;
   nix = {
     settings.experimental-features = [
       "nix-command"
@@ -38,7 +37,6 @@
       package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     };
     bluetooth.enable = true;
-    #ckb-next.enable = true;
   };
 
   # Bootloader.
